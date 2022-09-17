@@ -1,5 +1,6 @@
 package com.think.datasource.business.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.think.business.request.WorkOrderDailyRequest;
 import com.think.business.vo.WorkOrderDailyVo;
 import com.think.datasource.business.entity.WisdomgdWorkOrder;
@@ -23,7 +24,7 @@ public class WisdomgdWorkOrderServiceImpl extends ServiceImpl<WisdomgdWorkOrderM
 
     @Override
     public List<WorkOrderDailyVo> queryWorkOrderDaily(WorkOrderDailyRequest param) {
-
+        lambdaQuery().eq(StrUtil.isNotBlank(param.getEnterpriseName()), WisdomgdWorkOrder::getEnterpriseName, param.getEnterpriseName());
         return null;
     }
 }
